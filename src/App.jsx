@@ -13,7 +13,7 @@ function compareInput(input) {
 }
 
 function App() {
-  const [name, setName] = useState('')
+  const [input, setInput] = useState('')
   const [inputValue, setInputValue] = useState('')
 
   return (
@@ -23,16 +23,16 @@ function App() {
       <div id="mainHeader">
         <h1>moi!</h1>
       </div>
-      <button onClick={() => setName(inputValue)}>
+      <button onClick={() => setInput(inputValue)}>
           setName
       </button>
       <div>
         <input type="text" onChange={(e) => setInputValue(e.target.value)}></input>
         <p>
-          input is: {name} 
+          input is: {input} 
         </p>
         <p>
-          result: {compareInput(name)}
+          result: {compareInput(input)}
         </p>
       </div>
 
