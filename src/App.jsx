@@ -2,9 +2,9 @@ import { use, useState } from 'react'
 import './App.css'
 
 
-const getRandomItem = (finWords) => {
-  const randomIndex = Math.floor(Math.random() * finWords.length);
-  return finWords[randomIndex];
+const getRandomItem = (inputWord) => {
+  const randomIndex = Math.floor(Math.random() * inputWord.length);
+  return inputWord[randomIndex];
 }
 
 function compareInput(input) {
@@ -22,6 +22,7 @@ function App() {
   const [randomItem, setRandomItem] = useState('')
 
   const finWords = ['moi', 'hyvä', 'kiitos'];
+  const sweWords = ['hej', 'bra', 'tack']
 
   const handleClick = () => {
     setRandomItem(getRandomItem(finWords));
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <>
+
   <div id="container">
 
       <div id="mainHeader">
