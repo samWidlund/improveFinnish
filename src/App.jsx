@@ -1,12 +1,6 @@
 import { use, useState } from 'react'
 import './App.css'
 
-
-const getRandomItem = (inputWord) => {
-  const randomIndex = Math.floor(Math.random() * inputWord.length);
-  return inputWord[randomIndex];
-}
-
 function compareInput(input) {
   const inputdata = input.toString().toLowerCase();
 
@@ -20,12 +14,16 @@ function App() {
   const [input, setInput] = useState('')
   const [inputValue, setInputValue] = useState('')
   const [randomItem, setRandomItem] = useState('')
+  const [translation, setTranslation] = useState('')
 
   const finWords = ['moi', 'hyvä', 'kiitos'];
   const sweWords = ['hej', 'bra', 'tack']
 
   const handleClick = () => {
-    setRandomItem(getRandomItem(finWords));
+    const randomIndex = Math.floor(Math.random() * finWords.length);
+
+    setRandomItem(finWords[randomIndex]);
+    setTranslation(sweWords[randomIndex]);
   };
 
   return (
@@ -42,7 +40,9 @@ function App() {
       <p>
         Slumpat ord: {randomItem}
       </p>
-
+      <p>
+        Översättning: {translation}
+      </p>
       <button onClick={() => setInput(inputValue)}>
           setName
       </button>
