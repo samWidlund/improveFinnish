@@ -8,22 +8,14 @@ function App() {
   const [inputValue, setInputValue] = useState('')
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <div className="card">
-        <button onClick={() => setName(inputValue)}>
-          setName
-        </button>
+    <div className="card">
+      <button onClick={() => setName(inputValue)}>
+        setName
+      </button>
 
-        <input type="text" onChange={(e) => setInputValue(e.target.value)}></input>
-        <p>
-          name is: {name} 
+      <input type="text" onChange={(e) => setInputValue(e.target.value)}></input>
+      <p>
+        name is: {name} 
         </p>
       </div>
     </>
