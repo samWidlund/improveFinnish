@@ -4,7 +4,9 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function compareInput(input) {
-  if (input == "test")
+  const inputdata = input.toString().toLowerCase();
+
+  if (inputdata == "test")
   {
     return("correct");
   }
@@ -13,33 +15,27 @@ function compareInput(input) {
 function App() {
   const [name, setName] = useState('')
   const [inputValue, setInputValue] = useState('')
-  const [returnValue , setReturnValue] = useState('')
 
   return (
     <>
     <div id="container">
+
       <div id="mainHeader">
         <h1>moi!</h1>
       </div>
-      
-      <div>
       <button onClick={() => setName(inputValue)}>
-        setName
+          setName
       </button>
-
-      <button id="testing" onClick={compareInput(name)}>
-        click
-      </button>
-      <p>
-        is test true: {compareInput(name)}
-      </p>
-
-
-      <input type="text" onChange={(e) => setInputValue(e.target.value)}></input>
-      <p>
-        name is: {name} 
-      </p>
+      <div>
+        <input type="text" onChange={(e) => setInputValue(e.target.value)}></input>
+        <p>
+          input is: {name} 
+        </p>
+        <p>
+          result: {compareInput(name)}
+        </p>
       </div>
+
     </div>
     </>
   )
