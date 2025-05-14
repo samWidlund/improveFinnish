@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd src && vite",
+    "dev:backend": "cd src/backend && node server.js",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "backend": "node src/backend/server.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.9.0",
@@ -23,6 +24,7 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "concurrently": "^9.1.2",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
@@ -40,7 +42,7 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/samWidlund/improveFinnish/issues"
-  }, 
+  },
   "proxy": "http://localhost:5000",
   "homepage": "https://github.com/samWidlund/improveFinnish#readme"
 }
