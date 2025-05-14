@@ -35,7 +35,7 @@
   "main": "eslint.config.js",
   "repository": {
     "type": "git",
-    "url": "git+https://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@github.com/samWidlund/improveFinnish.git"
+    "url": "git+https://github.com/samWidlund/improveFinnish.git"
   },
   "keywords": [],
   "author": "",
