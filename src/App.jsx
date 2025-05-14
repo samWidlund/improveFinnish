@@ -49,8 +49,8 @@ function App() {
 
       <h1>Finska Ord</h1>
       <ul>
-        {data.map((data, index) => (
-          <li key={index}>{data.finnish}</li>
+        {data.map((data) => (
+          <li key={data.id}>{data.finnish_word}</li>
         ))}
       </ul>
 
