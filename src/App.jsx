@@ -1,5 +1,6 @@
-import { use, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import './App.css'
+import axios from 'axios';
 
 function App() {
   const [input, setInput] = useState('');
@@ -7,6 +8,18 @@ function App() {
   const [randomItem, setRandomItem] = useState('');
   const [translation, setTranslation] = useState('');
   const [correct, setCorrect] = useState(null);
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/data')
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
 
   const finWords = ['moi', 'hyvä', 'kiitos'];
   const sweWords = ['hej', 'bra', 'tack']
@@ -34,7 +47,15 @@ function App() {
         <h1>moi!</h1>
       </div>
 
-      <button onClick={handleClick}>
+      <h1>Finska Ord</h1>
+      <ul>
+        {data.map((data, index) => (
+          <li key={index}>{data.finnish}</li>
+        ))}
+      </ul>
+
+
+      {/* <button onClick={handleClick}>
         Slumpa ord
       </button>
 
@@ -47,10 +68,10 @@ function App() {
         onChange={(e) => setInput(e.target.value)}
       />
 
-      <button onClick={compareInput}>Checka svar</button>
+      <button onClick={compareInput}>Checka svar</button> */}
 
-      {correct === true && <p>✅ Rätt svar!</p>}
-      {correct === false && <p>❌ Fel svar. Försök igen.</p>}
+      {/* {correct === true && <p>✅ Rätt svar!</p>
+      {correct === false && <p>❌ Fel svar. Försök igen.</p>} */}
     </div>
   );
 }

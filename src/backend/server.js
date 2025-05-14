@@ -1,32 +1,36 @@
-const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+import sqlite3 from 'sqlite3';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = 5000;
+const PORT = 5000;
 
 app.use(cors());
 
-const db = new sqlite3.Database('../data/source.db', (err) => {
+const dbPath = path.join(__dirname, '../data/source.db');
+const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
   if (err) {
-    console.error('Could not connect to the database:', err.message);
+    console.error('Error opening database:', err.message);
   } else {
-    console.log('Connected to the SQLite database.');
+    console.log('Successfully connected to database!');
   }
 });
 
-// Skapa en API-route för att hämta data
 app.get('/data', (req, res) => {
-  db.all('SELECT * FROM words', [], (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    res.json({ data: rows });
+    db.all('SELECT * FROM words', [], (err, rows) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.json(rows);
+      }
+    });
   });
-});
 
-// Starta servern
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server runs on: http://localhost:${PORT}`);
 });
