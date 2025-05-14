@@ -7,11 +7,13 @@ body {
   padding: 0;
   margin: 0;
   background-color:#2E073F;
+  color: #EBD3F8;
 }
 
 #mainHeader {
   font-size: larger;
-}
+}   
+
   
 #container  {
   display: flex;
