@@ -11,6 +11,7 @@ function App() {
 
   const [data, setData] = useState([]);
 
+  // fetch db data
   useEffect(() => {
     axios.get('http://localhost:5000/data')
       .then((response) => {
@@ -46,16 +47,17 @@ function App() {
       <div id="mainHeader">
         <h1>moi!</h1>
       </div>
-
-      <h1>Finska Ord</h1>
-      <ul>
-        {data.map((data) => (
-          <li key={data.id}>{data.finnish_word}</li>
-        ))}
-      </ul>
-
-
-      {/* <button onClick={handleClick}>
+      <div id="words">
+        <ol>
+          <h2>Ord</h2>
+          {data.map((data) => (
+            <li key={data.id}>
+              {data.finnish_word} - {data.swedish_word}
+            </li>
+          ))}
+        </ol>
+      </div>
+      <button onClick={handleClick}>
         Slumpa ord
       </button>
 
@@ -68,10 +70,10 @@ function App() {
         onChange={(e) => setInput(e.target.value)}
       />
 
-      <button onClick={compareInput}>Checka svar</button> */}
+      <button onClick={compareInput}>Checka svar</button>
 
-      {/* {correct === true && <p>✅ Rätt svar!</p>
-      {correct === false && <p>❌ Fel svar. Försök igen.</p>} */}
+      {correct === true && <p>✅ Rätt svar!</p>}
+      {correct === false && <p>❌ Fel svar. Försök igen.</p>}
     </div>
   );
 }
