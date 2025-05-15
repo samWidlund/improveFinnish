@@ -8,7 +8,6 @@ function App() {
   const [randomItem, setRandomItem] = useState('');
   const [translation, setTranslation] = useState('');
   const [correct, setCorrect] = useState(null);
-
   const [data, setData] = useState([]);
 
   // fetch db data
@@ -22,15 +21,16 @@ function App() {
       });
   }, []);
 
-  const finWords = ['moi', 'hyvä', 'kiitos'];
-  const sweWords = ['hej', 'bra', 'tack']
-
   const handleClick = () => {
     const randomIndex = Math.floor(Math.random() * finWords.length);
     setRandomItem(finWords[randomIndex]);
     setTranslation(sweWords[randomIndex]);
     setCorrect(null); // reset
     setInput(''); // reset
+  };
+
+  const fetchInput = () => {
+    setInput(inputValue);
   };
 
   const compareInput = () => {
@@ -57,23 +57,10 @@ function App() {
           ))}
         </ol>
       </div>
-      <button onClick={handleClick}>
-        Slumpa ord
-      </button>
-
-      <p>Slumpat ord (finska): {randomItem}</p>
-
-      <input
-        type="text"
-        placeholder="Skriv översättning"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-
-      <button onClick={compareInput}>Checka svar</button>
-
-      {correct === true && <p>✅ Rätt svar!</p>}
-      {correct === false && <p>❌ Fel svar. Försök igen.</p>}
+      
+      <button onClick={fetchInput}>CheckAnswer</button>
+      <input type="text" onChange={(e) => setInputValue(e.target.value)} placeholder='Answer'/>
+      <p>Input value: {input}</p>
     </div>
   );
 }
