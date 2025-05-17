@@ -1,5 +1,6 @@
 {
   "name": "languageimprover",
+  "homepage": "https://samuelwidlund.com/improveFinnish/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,7 +13,7 @@
     "start": "concurrently --raw \"npm run start-backend\" \"vite\"",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run dev",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
@@ -48,6 +49,5 @@
   "bugs": {
     "url": "https://github.com/samWidlund/improveFinnish/issues"
   },
-  "proxy": "http://localhost:5000",
-  "homepage": "https://github.com/samWidlund/improveFinnish#readme"
+  "proxy": "http://localhost:5000"
 }
