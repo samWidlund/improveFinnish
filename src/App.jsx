@@ -10,7 +10,7 @@ function App() {
 
   // fetch db data
   useEffect(() => {
-    axios.get('https://improvefinnish-backend.onrender.com/data')
+    axios.get('https://languageimprover-backend.onrender.com/data')
       .then((response) => {
         setData(response.data);
         console.log(response.data);
