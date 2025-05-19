@@ -47,10 +47,10 @@ function App() {
         <ul>
           {data.map((data) => (
             <li key={data.id}>
-              {data.id}: {data.finnish_word} - {data.swedish_word}
+              {data.swedish_word} - {data.finnish_word}
             </li>
           ))}
-        </ul>
+        ´</ul>
       </div>
 
       <button onClick={fetchInput}>Input svenska</button>
