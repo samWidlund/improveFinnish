@@ -24,7 +24,7 @@ const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
 });
 
 app.get('/data', (req, res) => {
-    db.all('SELECT * FROM wordList', [], (err, rows) => {
+    db.all('SELECT * FROM wordList ORDER BY RANDOM() LIMIT 1', [], (err, rows) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
