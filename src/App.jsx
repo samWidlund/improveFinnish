@@ -41,7 +41,6 @@ function App() {
     <div id="container">
       <div id="mainHeader">
         <h1>moi!</h1>
-        <p>testRender</p>
       </div>
 
       <div id="words">
