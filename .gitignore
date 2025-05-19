@@ -29,3 +29,7 @@ dist-ssr
 # sensitive files
 .env
 .git-credentials
+
+# database
+*.sqlite
+*.sqlite-journal
