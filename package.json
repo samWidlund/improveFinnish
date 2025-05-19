@@ -7,9 +7,9 @@
   "scripts": {
     "dev": "concurrently --raw \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "vite",
-    "dev:backend": "node src/backend/server.js",
+    "dev:backend": "nodemon src/backend/server.js",
     "build": "vite build",
-    "start-backend": "node src/backend/server.js",
+    "start-backend": "nodemon src/backend/server.js",
     "start": "concurrently --raw \"npm run start-backend\" \"vite\"",
     "lint": "eslint .",
     "preview": "vite preview",
