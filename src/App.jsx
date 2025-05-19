@@ -29,7 +29,7 @@ function App() {
 
   const compareInput = () => {
     const answer = data.find((item) => item.swedish_word === input)?.finnish_word.toLowerCase();
-    setCorrectAnswer(answer || '');
+    setCorrectAnswer(answer || 'nonMatchingWord');
   }
   useEffect(() => {
     if (input) {
@@ -46,7 +46,6 @@ function App() {
       <div id="words">
       <ul>
         {data.map((row, i) => {
-
           console.log(row);
           return (
             <li key={i}>
