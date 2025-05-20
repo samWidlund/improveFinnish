@@ -39,21 +39,23 @@ function App() {
 
   return (
     <div id="container">
-      <div id="mainHeader">
-        <h1>moi!</h1>
-      </div>
+      <div id="centerContainer">
+        <div id="mainHeader">
+          <h1>moi!</h1>
+        </div>
 
-      <div id="words">
-      <div>
-        {data.map((row, i) => {
-          console.log(row);
-          return (
-            <div key={i}>
-              {row.swedish_word} - {row.finnish_word}
-            </div>
-          );
-        })}
-      </div>
+        <div id="words">
+        <div>
+          {data.map((row, i) => {
+            console.log(row);
+            return (
+              <div key={i}>
+                {row.swedish_word} - {row.finnish_word}
+              </div>
+            );
+          })}
+        </div>
+        </div>
       </div>
 
       <button onClick={fetchInput}>Input svenska</button>
