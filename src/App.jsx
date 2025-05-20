@@ -44,16 +44,16 @@ function App() {
       </div>
 
       <div id="words">
-      <ul>
+      <div>
         {data.map((row, i) => {
           console.log(row);
           return (
-            <li key={i}>
-              {row.id}: {row.swedish_word} - {row.finnish_word}
-            </li>
+            <div key={i}>
+              {row.swedish_word} - {row.finnish_word}
+            </div>
           );
         })}
-      </ul>
+      </div>
       </div>
 
       <button onClick={fetchInput}>Input svenska</button>
