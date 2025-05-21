@@ -9,13 +9,14 @@ function App() {
   const [data, setData] = useState([]);
   const [randomSweWord, setRandomSweWord] = useState('');
   const [isCorrect, setIsCorrect] = useState(null);
+  const [enteredText, setEnteredText] = useState('');
 
   // fetch db data
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_API_URL}/data`)
       .then((response) => {
         setData(response.data);
-        console.log(response.data);
+        console.log("Successfully fetched data from database!");
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -36,6 +37,15 @@ function App() {
     console.log("Random swedish: " + randomWord.swedish_word);
     console.log("Random finnish: " + randomWord.finnish_word);
     console.log("------------------------");
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
+      console.log("Enter!");
+      fetchInput();
+
+      setEnteredText("");
+    }
   }
 
   // fetch input to lower case
@@ -67,11 +77,20 @@ function App() {
           <h1>moi!</h1>
         </div>
           <button onClick={randomWord}>Slumpa ord</button>
-          <p>Random svenskt ord: {randomSweWord}</p>
+          <p>svenska: {randomSweWord}</p>
           <p>Finsk översättning: {correctFinAnswer}</p>
 
-          <button onClick={fetchInput}>fetchInput</button>
-          <input type="text" onChange={(e) => setInputValue(e.target.value)} placeholder='finsktOrd'/>
+          <input
+            type="text"
+            value={enteredText}
+            onChange={(e) => {
+              setInputValue(e.target.value);
+              setEnteredText(e.target.value);
+            }}
+            placeholder='finsktOrd'
+            onKeyDown={handleKeyDown}
+          />
+
           <p>Ditt svar: {input}</p>
           {isCorrect === true && <p className='correct'>Rätt svar!</p>}
           {isCorrect === false && <p className='wrong'>Fel svar!</p>}
