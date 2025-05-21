@@ -5,8 +5,10 @@ import axios from 'axios';
 function App() {
   const [input, setInput] = useState('');
   const [inputValue, setInputValue] = useState('');
-  const [correctAnswer, setCorrectAnswer] = useState('');
+  const [correctFinAnswer, setCorrectFinAnswer] = useState('');
   const [data, setData] = useState([]);
+  const [randomSweWord, setRandomSweWord] = useState('');
+  const [isCorrect, setIsCorrect] = useState(null);
 
   // fetch db data
   useEffect(() => {
@@ -20,6 +22,22 @@ function App() {
       });
   }, []);
 
+  const randomWord = () => { 
+    const randomIndex = Math.floor(Math.random() * data.length);
+    const randomWord = data[randomIndex];
+
+    setRandomSweWord(randomWord.swedish_word.toLowerCase());
+    setCorrectFinAnswer(randomWord.finnish_word.toLowerCase());
+
+    // debugging
+    console.log("------------------------");
+    console.log("randomWord:", randomWord);
+    console.log("randomIndex: " + randomIndex);
+    console.log("Random swedish: " + randomWord.swedish_word);
+    console.log("Random finnish: " + randomWord.finnish_word);
+    console.log("------------------------");
+  }
+
   // fetch input to lower case
   let inputLowerCase = '';
   const fetchInput = () => {
@@ -28,9 +46,14 @@ function App() {
   };
 
   const compareInput = () => {
-    const answer = data.find((item) => item.swedish_word === input)?.finnish_word.toLowerCase();
-    setCorrectAnswer(answer || 'nonMatchingWord');
+    if (input === correctFinAnswer) {
+      setIsCorrect(true);
+    }
+    else {
+      setIsCorrect(false);
+    }
   }
+
   useEffect(() => {
     if (input) {
       compareInput();
@@ -43,26 +66,17 @@ function App() {
         <div id="mainHeader">
           <h1>moi!</h1>
         </div>
+          <button onClick={randomWord}>Slumpa ord</button>
+          <p>Random svenskt ord: {randomSweWord}</p>
+          <p>Finsk översättning: {correctFinAnswer}</p>
 
-        <div id="words">
-        <div>
-          {data.map((row, i) => {
-            console.log(row);
-            return (
-              <div key={i}>
-                {row.swedish_word} - {row.finnish_word}
-              </div>
-            );
-          })}
-        </div>
-        </div>
+          <button onClick={fetchInput}>fetchInput</button>
+          <input type="text" onChange={(e) => setInputValue(e.target.value)} placeholder='finsktOrd'/>
+          <p>Ditt svar: {input}</p>
+          {isCorrect === true && <p className='correct'>Rätt svar!</p>}
+          {isCorrect === false && <p className='wrong'>Fel svar!</p>}
       </div>
-
-      <button onClick={fetchInput}>Input svenska</button>
-      <input type="text" onChange={(e) => setInputValue(e.target.value)} placeholder='svensktOrd'/>
-      <p>Input svenska: {input}</p>
-      <p>Output finska: {correctAnswer}</p>
-    </div>
+  </div>
   );
 }
 
