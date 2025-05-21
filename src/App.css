@@ -16,11 +16,3 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-#centerContainer {
-  padding: 2%;
-  margin: 2%;
-  background-color: var(--primary);
-  border-radius: 20px;
-}
-
