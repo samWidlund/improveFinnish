@@ -5,6 +5,6 @@ module.exports = {
   ],
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["light", "dark"], // eller välj andra teman här
+    themes: ["forest"], 
   },
 }
