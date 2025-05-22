@@ -17,13 +17,15 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.7",
     "axios": "^1.9.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "gh-pages": "^6.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
