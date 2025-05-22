@@ -2,7 +2,8 @@
 
 Finnish study webapp created using React + Vite
 
-- Backend and API via Express.js
-- SQLite database
-- Frontend + backend hosted via Render
-- Tailwindcss for styling
+- backend and API via **Express.js**
+- **SQLite** database
+- frontend + backend hosted via **Render**
+- **tailwindcss** for styling
+  - **daisyUI** theme
