@@ -10,16 +10,21 @@ function App() {
   const [randomSweWord, setRandomSweWord] = useState('');
   const [isCorrect, setIsCorrect] = useState(null);
   const [enteredText, setEnteredText] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // fetch db data
   useEffect(() => {
+    setLoading(true);
     axios.get(`${import.meta.env.VITE_API_URL}/data`)
       .then((response) => {
         setData(response.data);
-        console.log("Successfully fetched data from database!");
+        setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
+        setError('Error fetching data from database');
+        setLoading(false);
       });
   }, []);
 
@@ -39,12 +44,13 @@ function App() {
     console.log("------------------------");
   }
 
+// fetch input on enter key
   function handleKeyDown(e) {
     if (e.key === "Enter") {
       console.log("Enter!");
       fetchInput();
 
-      setEnteredText("");
+      setEnteredText(""); // clear input field
     }
   }
 
@@ -64,11 +70,20 @@ function App() {
     }
   }
 
+  // compare input when input changes
   useEffect(() => {
     if (input) {
       compareInput();
     }
   }, [input]);
+ 
+  // loading screen
+  if (loading) {
+    return <div className="flex h-screen justify-center items-center">loading database...</div>;
+  }
+  if (error) {
+    return <div className="error">{error}</div>;
+  }
 
   return (
     <div id="container">
