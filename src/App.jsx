@@ -97,6 +97,7 @@ function App() {
           <button onClick={randomWord}>Slumpa ord</button>
           <p>svenska: {randomSweWord}</p>
           <p>Finsk översättning: {correctFinAnswer}</p>
+          <button type="button" className="btn btn-primary">Flowbite knapp</button>
 
           <input
             type="text"
