@@ -84,9 +84,12 @@ function App() {
   if (error) {
     return <div className="error">{error}</div>;
   }
-
+  
   return (
+
     <div id="container">
+      <button className="btn btn-primary">Primär knapp</button>
+
       <div id="centerContainer">
         <div id="mainHeader">
           <h1 className='text-red-500'>moi!</h1>
