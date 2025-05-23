@@ -43,7 +43,7 @@ function App() {
     console.log("------------------------");
   }
 
-// fetch input on enter key
+  // fetch input on enter key
   function handleKeyDown(e) {
     if (e.key === "Enter") {
       console.log("Enter!");
