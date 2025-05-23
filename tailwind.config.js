@@ -3,8 +3,4 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  plugins: [require("daisyui")],
-  daisyui: {
-    themes: ["forest"], 
-  },
 }

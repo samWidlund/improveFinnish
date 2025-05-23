@@ -88,7 +88,7 @@ function App() {
     <div id="container">
       <div id="centerContainer">
         <div id="mainHeader">
-          <h1>moi!</h1>
+          <h1 className='text-red-500'>moi!</h1>
         </div>
           <button onClick={randomWord}>Slumpa ord</button>
           <p>svenska: {randomSweWord}</p>
