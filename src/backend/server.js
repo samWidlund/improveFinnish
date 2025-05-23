@@ -10,6 +10,8 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const debugTimeOut = 0; // increase by milliseconds to debug
+
 app.use(cors());
 app.use(express.json());
 
@@ -26,11 +28,13 @@ const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
 
 app.get('/data', (req, res) => {
   db.all('SELECT * FROM wordList', [], (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-    } else {
-      res.json(rows);
-    }
+    setTimeout(() => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.json(rows);
+      }
+    }, debugTimeOut); 
   });
 });
 
