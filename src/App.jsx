@@ -78,7 +78,7 @@ function App() {
  
   // loading screen
   if (loading) {
-    return <div className="flex h-screen justify-center items-center">loading database...<br/>(can take up to a minute :/)</div>;
+    return <div className="flex h-screen justify-center items-center">loading database...<br/>( can take up to a minute thanks to Render :/ )</div>;
   }
   if (error) {
     return <div className="error">{error}</div>;
