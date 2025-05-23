@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     setLoading(true);
     axios.get(`${import.meta.env.VITE_API_URL}/data`)
-      .then((response) => {s
+      .then((response) => {
         setData(response.data);
         setLoading(false);
       })
