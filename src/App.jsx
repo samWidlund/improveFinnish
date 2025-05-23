@@ -23,7 +23,6 @@ function App() {
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
-        setError('Error fetching data from database');
         setLoading(false);
       });
   }, []);
@@ -79,7 +78,7 @@ function App() {
  
   // loading screen
   if (loading) {
-    return <div className="flex h-screen justify-center items-center">loading database...</div>;
+    return <div className="flex h-screen justify-center items-center">loading database...<br/>(can take up to a minute :/)</div>;
   }
   if (error) {
     return <div className="error">{error}</div>;
