@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     setLoading(true);
     axios.get(`${import.meta.env.VITE_API_URL}/data`)
-      .then((response) => {
+      .then((response) => {s
         setData(response.data);
         setLoading(false);
       })
@@ -97,7 +97,6 @@ function App() {
           <button onClick={randomWord}>Slumpa ord</button>
           <p>svenska: {randomSweWord}</p>
           <p>Finsk översättning: {correctFinAnswer}</p>
-          <button type="button" className="btn btn-primary">Flowbite knapp</button>
 
           <input
             type="text"
