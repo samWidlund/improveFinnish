@@ -79,15 +79,14 @@ function App() {
  
   // loading screen
   if (loading) {
-    return <div className="flex h-screen justify-center items-center">loading database...<br/>( can take up to a minute thanks to Render :/ )</div>;
+    return <div className="flex h-screen justify-center items-center bg-blue-100">loading database...<br/>( can take up to a minute thanks to Render :/ )</div>;
   }
   if (error) {
     return <div className="error">{error}</div>;
   }
   
-  return (
-
-    <div id="container">
+    return (
+    <div id="container" className='space-y-4 p-8 bg-blue-100'>
       <div id="centerContainer">
         <div id="mainHeader">
           <h1 className='text-red-500'>moi!</h1>
@@ -112,7 +111,7 @@ function App() {
           {isCorrect === false && <p className='wrong'>Fel svar!</p>}
       </div>
   </div>
-  );
+   );
 }
 
 export default App
