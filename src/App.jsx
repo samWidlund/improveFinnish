@@ -79,12 +79,19 @@ function App() {
  
   // loading screen
   if (loading) {
-    return <div className="flex h-screen justify-center items-center bg-blue-100">loading database...<br/>( can take up to a minute thanks to Render :/ )</div>;
+    return (
+    <div className="flex flex-col h-screen justify-center items-center bg-blue-100 space-y-4">
+      <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+      <span className="text-lg font-semibold">
+        loading database<span className="typewriter-dots ml-1" />
+      </span>
+    </div>
+    );
   }
   if (error) {
     return <div className="error">{error}</div>;
   }
-  
+    
     return (
     <div id="container" className='space-y-4 p-8 bg-blue-100'>
       <div id="centerContainer">
