@@ -8,3 +8,9 @@ Finnish study webapp created using React + Vite
 - **SQLite** database
 - frontend + backend hosted via **Render**
 - **tailwindcss** for styling
+
+## Backlog
+
+- add flipcard effect
+- improve database
+- shorten loading time
