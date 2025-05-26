@@ -93,7 +93,7 @@ function App() {
   }
     
     return (
-    <div id="container" className='space-y-4 p-8 bg-blue-100'>
+    <div id="container" className='space-y-4 p-8 bg-blue-100 font-chewy'>
       <div id="centerContainer">
         <div id="mainHeader">
           <h1 className='text-red-500'>moi!</h1>
