@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios';
+import FlipCard from './FlipCard.jsx';
 
 function App() {
   const [input, setInput] = useState('');
@@ -12,6 +13,7 @@ function App() {
   const [enteredText, setEnteredText] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   // fetch db data
   useEffect(() => {
@@ -95,10 +97,16 @@ function App() {
     return (
     <div id="container" className='space-y-4 p-8 bg-blue-100 font-chewy'>
       <div id="centerContainer">
-        <div id="mainHeader">
-          <h1 className='text-red-500'>moi!</h1>
+
+        <FlipCard front="swedish word" back="finnish word" isFlipped={isFlipped} />
+        <button className="buttonStyle" onClick={() => setIsFlipped(f => !f)}>
+          flip card
+        </button>
+
+        {/* <div id="mainHeader"> 
+          <h1>moi!</h1>
         </div>
-          <button className='text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800' onClick={randomWord}>Slumpa ord</button>
+          <button className='buttonStyle' onClick={randomWord}>Slumpa ord</button>
           <p>svenska: {randomSweWord}</p>
           <p>Finsk översättning: {correctFinAnswer}</p>
 
@@ -115,7 +123,7 @@ function App() {
 
           <p>Ditt svar: {input}</p>
           {isCorrect === true && <p className='correct'>Rätt svar!</p>}
-          {isCorrect === false && <p className='wrong'>Fel svar!</p>}
+          {isCorrect === false && <p className='wrong'>Fel svar!</p>} */}
       </div>
   </div>
    );
