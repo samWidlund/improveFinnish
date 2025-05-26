@@ -97,33 +97,32 @@ function App() {
     return (
     <div id="container" className='space-y-4 p-8 bg-blue-100 font-chewy'>
       <div id="centerContainer">
+        <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
 
-        <FlipCard front="swedish word" back="finnish word" isFlipped={isFlipped} />
+        {/* buttons */}
         <button className="buttonStyle" onClick={() => setIsFlipped(f => !f)}>
-          flip card
+          <p>flip card</p>
         </button>
+        <button className='buttonStyle' onClick={randomWord}>Slumpa ord</button>
 
-        {/* <div id="mainHeader"> 
-          <h1>moi!</h1>
-        </div>
-          <button className='buttonStyle' onClick={randomWord}>Slumpa ord</button>
-          <p>svenska: {randomSweWord}</p>
-          <p>Finsk översättning: {correctFinAnswer}</p>
+          {/* input answer */}
+          <div>
+            <input
+              type="text"
+              value={enteredText}
+              onChange={(e) => {
+                setInputValue(e.target.value);
+                setEnteredText(e.target.value);
+              }}
+              placeholder='finsktOrd'
+              onKeyDown={handleKeyDown}
+            />
+          </div>
 
-          <input
-            type="text"
-            value={enteredText}
-            onChange={(e) => {
-              setInputValue(e.target.value);
-              setEnteredText(e.target.value);
-            }}
-            placeholder='finsktOrd'
-            onKeyDown={handleKeyDown}
-          />
-
+          {/* input feedback */}
           <p>Ditt svar: {input}</p>
           {isCorrect === true && <p className='correct'>Rätt svar!</p>}
-          {isCorrect === false && <p className='wrong'>Fel svar!</p>} */}
+          {isCorrect === false && <p className='wrong'>Fel svar!</p>}
       </div>
   </div>
    );
