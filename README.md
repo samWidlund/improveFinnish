@@ -14,3 +14,4 @@ Finnish study webapp created using React + Vite
 - add flipcard effect
 - improve database
 - shorten loading time
+- fix debugTimeOut time
