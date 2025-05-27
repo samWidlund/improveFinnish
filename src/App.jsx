@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios';
+import FlipCard from './FlipCard.jsx';
 
 function App() {
   const [input, setInput] = useState('');
@@ -12,6 +13,7 @@ function App() {
   const [enteredText, setEnteredText] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   // fetch db data
   useEffect(() => {
@@ -80,7 +82,7 @@ function App() {
   // loading screen
   if (loading) {
     return (
-    <div className="flex flex-col h-screen justify-center items-center bg-blue-100 space-y-4">
+    <div className="flex flex-col h-screen justify-center items-center space-y-4">
       <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
       <span className="text-lg font-semibold">
         loading database<span className="typewriter-dots ml-1" />
@@ -93,26 +95,31 @@ function App() {
   }
     
     return (
-    <div id="container" className='space-y-4 p-8 bg-blue-100 font-chewy'>
+    <div id="container" className='space-y-4 p-8 font-chewy'>
       <div id="centerContainer">
-        <div id="mainHeader">
-          <h1 className='text-red-500'>moi!</h1>
-        </div>
-          <button className='text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800' onClick={randomWord}>Slumpa ord</button>
-          <p>svenska: {randomSweWord}</p>
-          <p>Finsk översättning: {correctFinAnswer}</p>
+        <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
 
-          <input
-            type="text"
-            value={enteredText}
-            onChange={(e) => {
-              setInputValue(e.target.value);
-              setEnteredText(e.target.value);
-            }}
-            placeholder='finsktOrd'
-            onKeyDown={handleKeyDown}
-          />
+        {/* buttons */}
+        <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
+          <p>flip card</p>
+        </button>
+        <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
 
+          {/* input answer */}
+          <div>
+            <input
+              type="text"
+              value={enteredText}
+              onChange={(e) => {
+                setInputValue(e.target.value);
+                setEnteredText(e.target.value);
+              }}
+              placeholder='finsktOrd'
+              onKeyDown={handleKeyDown}
+            />
+          </div>
+
+          {/* input feedback */}
           <p>Ditt svar: {input}</p>
           {isCorrect === true && <p className='correct'>Rätt svar!</p>}
           {isCorrect === false && <p className='wrong'>Fel svar!</p>}

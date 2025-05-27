@@ -3,11 +3,6 @@ body {
   margin: 0;
 }
 
-#mainHeader {
-  font-size: larger;
-
-}
-
 #container  {
   display: flex;
   flex-direction: column;
@@ -36,4 +31,20 @@ body {
   animation: dots 3s steps(7, end) infinite;
   font-family: monospace;
   letter-spacing: 2px;
+}
+
+/* testing flicard */
+.card { perspective: 800px;}
+.card__content {transform-style: preserve-3d;}
+
+.card__front,
+.card__back { backface-visibility: hidden;}
+.card__back{ transform: rotateY(.5turn);}
+
+.card__content {
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+.card.flipped .card__content {
+  transform: rotateY(.5turn);
 }

@@ -1,15 +1,13 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}"
-  ],
+const { default: daisyui } = require('daisyui');
+
+// tailwind.config.js
+module.exports = {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {
-      fontFamily: {
-        chewy: ['Chewy', 'cursive'],
-      },
-    },
+    extend: {},
   },
-  plugins: [],
-}
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: true,
+  }
+};
