@@ -1,3 +1,5 @@
+const { default: daisyui } = require('daisyui');
+
 // tailwind.config.js
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -5,4 +7,7 @@ module.exports = {
     extend: {},
   },
   plugins: [require('daisyui')],
+  daisyui: {
+    themes: true,
+  }
 };
