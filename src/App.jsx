@@ -100,10 +100,10 @@ function App() {
         <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
 
         {/* buttons */}
-        <button className="buttonStyle" onClick={() => setIsFlipped(f => !f)}>
+        <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
           <p>flip card</p>
         </button>
-        <button className='buttonStyle' onClick={randomWord}>Slumpa ord</button>
+        <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
 
           {/* input answer */}
           <div>
