@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios';
 import FlipCard from './FlipCard.jsx';
+import LoginPage from './LoginPage.jsx';
 
 function App() {
   const [input, setInput] = useState('');
@@ -97,6 +98,7 @@ function App() {
     return (
     <div id="container" className='space-y-4 p-8 font-chewy'>
       <div id="centerContainer">
+        <LoginPage />
         <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
 
         {/* buttons */}
