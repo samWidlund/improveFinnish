@@ -82,7 +82,7 @@ function App() {
   // loading screen
   if (loading) {
     return (
-    <div className="flex flex-col h-screen justify-center items-center bg-blue-100 space-y-4">
+    <div className="flex flex-col h-screen justify-center items-center space-y-4">
       <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
       <span className="text-lg font-semibold">
         loading database<span className="typewriter-dots ml-1" />
@@ -95,7 +95,7 @@ function App() {
   }
     
     return (
-    <div id="container" className='space-y-4 p-8 bg-blue-100 font-chewy'>
+    <div id="container" className='space-y-4 p-8 font-chewy'>
       <div id="centerContainer">
         <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
 
