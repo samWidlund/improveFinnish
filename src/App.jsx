@@ -96,37 +96,39 @@ function App() {
   }
     
     return (
-    <div id="container" className='space-y-4 p-8 font-chewy'>
-      <div id="centerContainer">
-        <LoginPage />
-        <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
+        <div id="container" className='font-chewy'>
+          
+          <LoginPage />
+          
+          <div id="centerContainer">
+            <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
 
-        {/* buttons */}
-        <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
-          <p>flip card</p>
-        </button>
-        <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
+            {/* buttons */}
+            <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
+              <p>flip card</p>
+            </button>
+            <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
 
-          {/* input answer */}
-          <div>
-            <input
-              type="text"
-              value={enteredText}
-              onChange={(e) => {
-                setInputValue(e.target.value);
-                setEnteredText(e.target.value);
-              }}
-              placeholder='finsktOrd'
-              onKeyDown={handleKeyDown}
-            />
+              {/* input answer */}
+              <div>
+                <input
+                  type="text"
+                  value={enteredText}
+                  onChange={(e) => {
+                    setInputValue(e.target.value);
+                    setEnteredText(e.target.value);
+                  }}
+                  placeholder='finsktOrd'
+                  onKeyDown={handleKeyDown}
+                />
+              </div>
+
+              {/* input feedback */}
+              <p>Ditt svar: {input}</p>
+              {isCorrect === true && <p className='correct'>Rätt svar!</p>}
+              {isCorrect === false && <p className='wrong'>Fel svar!</p>}
           </div>
-
-          {/* input feedback */}
-          <p>Ditt svar: {input}</p>
-          {isCorrect === true && <p className='correct'>Rätt svar!</p>}
-          {isCorrect === false && <p className='wrong'>Fel svar!</p>}
       </div>
-  </div>
    );
 }
 

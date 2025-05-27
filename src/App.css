@@ -2,7 +2,7 @@ body {
   padding: 0;
   margin: 0;
 }
-
+/* 
 #container  {
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@ body {
   height: 100vh;
   align-items: center;
   justify-content: center;
-}
+} */
 
 /* effects */
 @keyframes dots {
@@ -47,4 +47,8 @@ body {
 }
 .card.flipped .card__content {
   transform: rotateY(.5turn);
+}
+
+#centerContainer {
+  visibility: hidden;
 }
