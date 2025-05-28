@@ -73,6 +73,10 @@ function App() {
     }
   }
 
+  const handleGuestClick = () => {
+    // code
+  };
+
   // compare input when input changes
   useEffect(() => {
     if (input) {
@@ -98,8 +102,8 @@ function App() {
     return (
         <div id="container" className='font-chewy'>
           
-          <LoginPage />
-          
+        <LoginPage onGuestClick={handleGuestClick} />          
+
           <div id="centerContainer">
             <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
 
