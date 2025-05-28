@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios';
 import FlipCard from './FlipCard.jsx';
+import LoginPage from './LoginPage.jsx';
 
 function App() {
   const [input, setInput] = useState('');
@@ -14,6 +15,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
 
   // fetch db data
   useEffect(() => {
@@ -72,6 +74,11 @@ function App() {
     }
   }
 
+  const handleGuestClick = (e) => {
+    e.preventDefault();
+    setShowLogin(false);
+  };
+
   // compare input when input changes
   useEffect(() => {
     if (input) {
@@ -95,36 +102,48 @@ function App() {
   }
     
     return (
-    <div id="container" className='space-y-4 p-8 font-chewy'>
-      <div id="centerContainer">
-        <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
+        <div id="container" className='font-chewy'>
+          
+          {showLogin ? (
+            <LoginPage onGuestClick={handleGuestClick} />
+          ) : (
 
-        {/* buttons */}
-        <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
-          <p>flip card</p>
-        </button>
-        <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
+          <div id="centerContainer" className="flex flex-col items-center justify-center mx-auto md:h-screen lg:py-10">
 
-          {/* input answer */}
-          <div>
-            <input
-              type="text"
-              value={enteredText}
-              onChange={(e) => {
-                setInputValue(e.target.value);
-                setEnteredText(e.target.value);
-              }}
-              placeholder='finsktOrd'
-              onKeyDown={handleKeyDown}
-            />
+
+            <div className='flex flex-col items-start border-2 border-black p-8 rounded-lg bg-blue-300 gap-2 shadow-lg shadow-gray-900'>
+            
+              <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
+
+              {/* buttons */}
+              <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
+                <p>flip card</p>
+              </button>
+              <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
+
+              {/* input answer */}
+              <div>
+                <input
+                  type="text"
+                  value={enteredText}
+                  onChange={(e) => {
+                    setInputValue(e.target.value);
+                    setEnteredText(e.target.value);
+                  }}
+                  placeholder='finsktOrd'
+                  onKeyDown={handleKeyDown}
+                />
+              </div>
+
+              {/* input feedback */}
+              <p>Ditt svar: {input}</p>
+              {isCorrect === true && <p className='correct'>Rätt svar!</p>}
+              {isCorrect === false && <p className='wrong'>Fel svar!</p>}
+            </div>
           </div>
 
-          {/* input feedback */}
-          <p>Ditt svar: {input}</p>
-          {isCorrect === true && <p className='correct'>Rätt svar!</p>}
-          {isCorrect === false && <p className='wrong'>Fel svar!</p>}
+          )}
       </div>
-  </div>
    );
 }
 
