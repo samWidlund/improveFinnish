@@ -2,8 +2,8 @@ body {
   padding: 0;
   margin: 0;
 }
-/* 
-#container  {
+
+/* #container  {
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -47,8 +47,4 @@ body {
 }
 .card.flipped .card__content {
   transform: rotateY(.5turn);
-}
-
-#centerContainer {
-  visibility: hidden;
 }

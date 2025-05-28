@@ -15,6 +15,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
 
   // fetch db data
   useEffect(() => {
@@ -73,8 +74,9 @@ function App() {
     }
   }
 
-  const handleGuestClick = () => {
-    // code
+  const handleGuestClick = (e) => {
+    e.preventDefault();
+    setShowLogin(false);
   };
 
   // compare input when input changes
@@ -102,7 +104,9 @@ function App() {
     return (
         <div id="container" className='font-chewy'>
           
-        <LoginPage onGuestClick={handleGuestClick} />          
+          {showLogin ? (
+            <LoginPage onGuestClick={handleGuestClick} />
+          ) : (
 
           <div id="centerContainer">
             <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
@@ -131,7 +135,10 @@ function App() {
               <p>Ditt svar: {input}</p>
               {isCorrect === true && <p className='correct'>Rätt svar!</p>}
               {isCorrect === false && <p className='wrong'>Fel svar!</p>}
+              
           </div>
+
+          )}
       </div>
    );
 }
