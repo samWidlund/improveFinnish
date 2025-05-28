@@ -108,14 +108,18 @@ function App() {
             <LoginPage onGuestClick={handleGuestClick} />
           ) : (
 
-          <div id="centerContainer">
-            <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
+          <div id="centerContainer" className="flex flex-col items-center justify-center mx-auto md:h-screen lg:py-10">
 
-            {/* buttons */}
-            <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
-              <p>flip card</p>
-            </button>
-            <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
+
+            <div className='flex flex-col items-start border-2 border-black p-8 rounded-lg bg-blue-300 gap-2 shadow-lg shadow-gray-900'>
+            
+              <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
+
+              {/* buttons */}
+              <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
+                <p>flip card</p>
+              </button>
+              <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
 
               {/* input answer */}
               <div>
@@ -135,7 +139,7 @@ function App() {
               <p>Ditt svar: {input}</p>
               {isCorrect === true && <p className='correct'>Rätt svar!</p>}
               {isCorrect === false && <p className='wrong'>Fel svar!</p>}
-              
+            </div>
           </div>
 
           )}
