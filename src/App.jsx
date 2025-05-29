@@ -108,7 +108,7 @@ function App() {
             <LoginPage onGuestClick={handleGuestClick} />
           ) : (
 
-          <div id="centerContainer" className="flex flex-col items-center justify-center mx-auto md:h-screen lg:py-10">
+          <div id="centerContainer" className="flex flex-col items-center justify-center mx-auto h-screen lg:py-10">
 
 
             <div className='flex flex-col items-start border-2 border-black p-8 rounded-lg bg-blue-300 gap-2 shadow-lg shadow-gray-900'>
