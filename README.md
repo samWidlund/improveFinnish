@@ -10,9 +10,20 @@ Finnish study webapp created using React + Vite
 - **tailwindcss** for styling
 - **daisyUI** theme
 
+## Quick start
+
+### Development
+
+`npm run dev`
+
+### Production
+
+`npm run build`
+`npm run start-backend`
+
 ## Backlog
 
-- add flipcard effect
-- improve database content
-- shorten loading time
-- fix debugTimeOut time
+- [x] add flipcard effect
+- [ ] improve database content
+- [ ] shorten backend startup time
+- [ ] fix debugTimeOut time
