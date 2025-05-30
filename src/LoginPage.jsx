@@ -18,10 +18,8 @@ const LoginPage = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Här kan du lägga till din login-logik
             console.log('Form submitted:', formData);
-            // Exempel:
-            // await loginUser(formData);
+
         } catch (error) {
             console.error('Login error:', error);
         }
