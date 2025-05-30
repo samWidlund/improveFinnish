@@ -18,7 +18,7 @@ function App() {
   const [showLogin, setShowLogin] = useState(true);
   
   
-  // Handle login state
+  // handle login state
   useEffect(() => {
     const loginStatus = localStorage.getItem('isLoggedIn');
     console.log('Login status from localStorage:', loginStatus);
