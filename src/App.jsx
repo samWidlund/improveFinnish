@@ -172,8 +172,8 @@ function App() {
 
           {/* input feedback */}
           <p>input: {input}</p>
-          {isCorrect === true && <p className='correct'>Rätt svar!</p>}
-          {isCorrect === false && <p className='wrong'>Fel svar!</p>}
+          {isCorrect === true && <p className='text-green-600'>Correct!</p>}
+          {isCorrect === false && <p className='text-red-600'>Incorrect!</p>}
         </div>
       </div>
 
