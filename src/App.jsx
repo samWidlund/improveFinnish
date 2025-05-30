@@ -147,12 +147,14 @@ function App() {
         <div className='flex flex-col items-start border-2 border-black p-8 rounded-lg bg-blue-300 gap-2 shadow-lg shadow-gray-900'>
         
           <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
-
+          
           {/* buttons */}
+          <button className="btn btn-primary"onClick={randomWord}>
+            <p>randomize word</p>
+          </button>
           <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
             <p>flip card</p>
           </button>
-          <button className="btn btn-primary"onClick={randomWord}>randomize word</button>
 
           {/* input answer */}
           <div>
