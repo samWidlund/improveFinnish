@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const LoginPage = (props) => {
+const LoginPage = ({ setShowLogin, onGuestClick }) => {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -19,6 +19,7 @@ const LoginPage = (props) => {
         e.preventDefault();
         try {
             console.log('Form submitted:', formData);
+            setShowLogin(false);
 
         } catch (error) {
             console.error('Login error:', error);
@@ -85,7 +86,7 @@ const LoginPage = (props) => {
                             <a 
                               href="#" 
                               className="block text-center font-light text-gray-500 dark:text-gray-400 hover:underline"
-                              onClick={props.onGuestClick}>
+                              onClick={onGuestClick}>
                               Continue as guest
                               </a>
                         </form>

@@ -105,7 +105,7 @@ function App() {
         <div id="container" className='font-chewy'>
           
           {showLogin ? (
-            <LoginPage onGuestClick={handleGuestClick} />
+            <LoginPage setShowLogin={setShowLogin} onGuestClick={handleGuestClick} />
           ) : (
 
           <div id="centerContainer" className="flex flex-col items-center justify-center mx-auto h-screen lg:py-10">
