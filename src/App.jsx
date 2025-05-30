@@ -137,7 +137,7 @@ function App() {
           onClick={handleLogout}
           className="btn btn-secondary px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-md"
         >
-          logout
+          Logout
         </button>
       </div>
 
@@ -150,10 +150,10 @@ function App() {
           
           {/* buttons */}
           <button className="btn btn-primary"onClick={randomWord}>
-            <p>randomize word</p>
+            <p>Randomize word</p>
           </button>
           <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
-            <p>flip card</p>
+            <p>Flip card</p>
           </button>
 
           {/* input answer */}
@@ -172,7 +172,7 @@ function App() {
           </div>
 
           {/* input feedback */}
-          <p>input: {input}</p>
+          <p>Input: {input}</p>
           {isCorrect === true && <p className='text-green-600'>Correct!</p>}
           {isCorrect === false && <p className='text-red-600'>Incorrect!</p>}
         </div>
