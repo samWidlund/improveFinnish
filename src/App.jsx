@@ -137,7 +137,7 @@ function App() {
           onClick={handleLogout}
           className="btn btn-secondary px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-md"
         >
-          Logga ut
+          logout
         </button>
       </div>
 
@@ -152,7 +152,7 @@ function App() {
           <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
             <p>flip card</p>
           </button>
-          <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
+          <button className="btn btn-primary"onClick={randomWord}>randomize word</button>
 
           {/* input answer */}
           <div>
@@ -163,13 +163,13 @@ function App() {
                 setInputValue(e.target.value);
                 setEnteredText(e.target.value);
               }}
-              placeholder='finsktOrd'
+              placeholder='finnishInput'
               onKeyDown={handleKeyDown}
             />
           </div>
 
           {/* input feedback */}
-          <p>Ditt svar: {input}</p>
+          <p>input: {input}</p>
           {isCorrect === true && <p className='correct'>Rätt svar!</p>}
           {isCorrect === false && <p className='wrong'>Fel svar!</p>}
         </div>
