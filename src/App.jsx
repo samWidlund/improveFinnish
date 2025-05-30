@@ -98,7 +98,6 @@ function App() {
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     setShowLogin(true);
-
     console.log('localStorage after logout:', localStorage.getItem('isLoggedIn'));
   };
 
