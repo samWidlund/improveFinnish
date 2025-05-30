@@ -16,6 +16,16 @@ function App() {
   const [error, setError] = useState(null);
   const [isFlipped, setIsFlipped] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
+  
+  
+  // Handle login state
+  useEffect(() => {
+    const loginStatus = localStorage.getItem('isLoggedIn');
+    console.log('Login status from localStorage:', loginStatus);
+    if (loginStatus === 'true') {
+      setShowLogin(false);
+    }
+  }, []);
 
   // fetch db data
   useEffect(() => {
@@ -76,7 +86,20 @@ function App() {
 
   const handleGuestClick = (e) => {
     e.preventDefault();
-    setShowLogin(false);
+    try {
+      localStorage.setItem('isLoggedIn', 'true');
+      console.log('After setting localStorage:', localStorage.getItem('isLoggedIn'));
+      setShowLogin(false);
+    } catch (error) {
+      console.error('Error setting localStorage:', error);
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    setShowLogin(true);
+
+    console.log('localStorage after logout:', localStorage.getItem('isLoggedIn'));
   };
 
   // compare input when input changes
@@ -107,41 +130,52 @@ function App() {
           {showLogin ? (
             <LoginPage setShowLogin={setShowLogin} onGuestClick={handleGuestClick} />
           ) : (
-
-          <div id="centerContainer" className="flex flex-col items-center justify-center mx-auto h-screen lg:py-10">
-
-
-            <div className='flex flex-col items-start border-2 border-black p-8 rounded-lg bg-blue-300 gap-2 shadow-lg shadow-gray-900'>
-            
-              <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
-
-              {/* buttons */}
-              <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
-                <p>flip card</p>
+          <>
+            {/* logout button */}
+            <div className="absolute top-4 right-4">
+              <button 
+                onClick={handleLogout}
+                className="btn btn-secondary px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-md"
+              >
+                Logga ut
               </button>
-              <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
-
-              {/* input answer */}
-              <div>
-                <input
-                  type="text"
-                  value={enteredText}
-                  onChange={(e) => {
-                    setInputValue(e.target.value);
-                    setEnteredText(e.target.value);
-                  }}
-                  placeholder='finsktOrd'
-                  onKeyDown={handleKeyDown}
-                />
-              </div>
-
-              {/* input feedback */}
-              <p>Ditt svar: {input}</p>
-              {isCorrect === true && <p className='correct'>Rätt svar!</p>}
-              {isCorrect === false && <p className='wrong'>Fel svar!</p>}
             </div>
-          </div>
 
+            <div id="centerContainer" className="flex flex-col items-center justify-center mx-auto h-screen lg:py-10">
+
+
+              <div className='flex flex-col items-start border-2 border-black p-8 rounded-lg bg-blue-300 gap-2 shadow-lg shadow-gray-900'>
+              
+                <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
+
+                {/* buttons */}
+                <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
+                  <p>flip card</p>
+                </button>
+                <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
+
+                {/* input answer */}
+                <div>
+                  <input
+                    type="text"
+                    value={enteredText}
+                    onChange={(e) => {
+                      setInputValue(e.target.value);
+                      setEnteredText(e.target.value);
+                    }}
+                    placeholder='finsktOrd'
+                    onKeyDown={handleKeyDown}
+                  />
+                </div>
+
+                {/* input feedback */}
+                <p>Ditt svar: {input}</p>
+                {isCorrect === true && <p className='correct'>Rätt svar!</p>}
+                {isCorrect === false && <p className='wrong'>Fel svar!</p>}
+              </div>
+            </div>
+
+          </>
           )}
       </div>
    );

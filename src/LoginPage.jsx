@@ -19,6 +19,8 @@ const LoginPage = ({ setShowLogin, onGuestClick }) => {
         e.preventDefault();
         try {
             console.log('Form submitted:', formData);
+            localStorage.setItem('isLoggedIn', 'true');
+            console.log('localStorage after login:', localStorage.getItem('isLoggedIn'));
             setShowLogin(false);
 
         } catch (error) {
