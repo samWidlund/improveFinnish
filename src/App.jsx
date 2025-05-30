@@ -159,6 +159,7 @@ function App() {
           {/* input answer */}
           <div>
             <input
+              className='input input-bordered w-full max-w-xs'
               type="text"
               value={enteredText}
               onChange={(e) => {
