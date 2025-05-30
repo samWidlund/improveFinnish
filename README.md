@@ -10,8 +10,6 @@ Finnish study webapp created using React + Vite
 - **tailwindcss** for styling
 - **daisyUI** theme
 
----
-
 ## Quick start
 
 ### 1. Install dependencies:
@@ -42,8 +40,6 @@ Starts both frontend and backend in development mode.
    ```
 
 Now your built frontend from `dist/` and the API are served via the backend.
-
----
 
 ## Backlog
 
