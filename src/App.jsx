@@ -107,77 +107,76 @@ function App() {
       compareInput();
     }
   }, [input]);
- 
-  // loading screen
+  
+  // login page
+  if (showLogin) {
+    return <LoginPage setShowLogin={setShowLogin} onGuestClick={handleGuestClick} />;
+  }
+
+  // if backend/database not loaded, return loading screen
   if (loading) {
     return (
-    <div className="flex flex-col h-screen justify-center items-center space-y-4">
-      <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
-      <span className="text-lg font-semibold">
-        loading database<span className="typewriter-dots ml-1" />
-      </span>
-    </div>
+      <div className="flex flex-col h-screen justify-center items-center space-y-4">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+        <span className="text-lg font-semibold">
+          loading database<span className="typewriter-dots ml-1" />
+        </span>
+      </div>
     );
   }
   if (error) {
     return <div className="error">{error}</div>;
   }
-    
-    return (
-        <div id="container" className='font-chewy'>
-          
-          {showLogin ? (
-            <LoginPage setShowLogin={setShowLogin} onGuestClick={handleGuestClick} />
-          ) : (
-          <>
-            {/* logout button */}
-            <div className="absolute top-4 right-4">
-              <button 
-                onClick={handleLogout}
-                className="btn btn-secondary px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-md"
-              >
-                Logga ut
-              </button>
-            </div>
 
-            <div id="centerContainer" className="flex flex-col items-center justify-center mx-auto h-screen lg:py-10">
-
-
-              <div className='flex flex-col items-start border-2 border-black p-8 rounded-lg bg-blue-300 gap-2 shadow-lg shadow-gray-900'>
-              
-                <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
-
-                {/* buttons */}
-                <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
-                  <p>flip card</p>
-                </button>
-                <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
-
-                {/* input answer */}
-                <div>
-                  <input
-                    type="text"
-                    value={enteredText}
-                    onChange={(e) => {
-                      setInputValue(e.target.value);
-                      setEnteredText(e.target.value);
-                    }}
-                    placeholder='finsktOrd'
-                    onKeyDown={handleKeyDown}
-                  />
-                </div>
-
-                {/* input feedback */}
-                <p>Ditt svar: {input}</p>
-                {isCorrect === true && <p className='correct'>Rätt svar!</p>}
-                {isCorrect === false && <p className='wrong'>Fel svar!</p>}
-              </div>
-            </div>
-
-          </>
-          )}
+  return (
+    <div id="container" className='font-chewy'>
+      
+      {/* logout button */}
+      <div className="absolute top-4 right-4">
+        <button 
+          onClick={handleLogout}
+          className="btn btn-secondary px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-md"
+        >
+          Logga ut
+        </button>
       </div>
-   );
+
+      <div id="centerContainer" className="flex flex-col items-center justify-center mx-auto h-screen lg:py-10">
+
+
+        <div className='flex flex-col items-start border-2 border-black p-8 rounded-lg bg-blue-300 gap-2 shadow-lg shadow-gray-900'>
+        
+          <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
+
+          {/* buttons */}
+          <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
+            <p>flip card</p>
+          </button>
+          <button className="btn btn-primary"onClick={randomWord}>Slumpa ord</button>
+
+          {/* input answer */}
+          <div>
+            <input
+              type="text"
+              value={enteredText}
+              onChange={(e) => {
+                setInputValue(e.target.value);
+                setEnteredText(e.target.value);
+              }}
+              placeholder='finsktOrd'
+              onKeyDown={handleKeyDown}
+            />
+          </div>
+
+          {/* input feedback */}
+          <p>Ditt svar: {input}</p>
+          {isCorrect === true && <p className='correct'>Rätt svar!</p>}
+          {isCorrect === false && <p className='wrong'>Fel svar!</p>}
+        </div>
+      </div>
+
+    </div>
+ );
 }
 
 export default App
