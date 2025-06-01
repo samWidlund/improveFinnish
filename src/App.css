@@ -25,7 +25,7 @@ body {
   letter-spacing: 2px;
 }
 
-/* testing flicard */
+/* flicard */
 .card { perspective: 800px;}
 .card__content {transform-style: preserve-3d;}
 

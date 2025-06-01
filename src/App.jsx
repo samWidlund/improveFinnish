@@ -16,12 +16,10 @@ function App() {
   const [error, setError] = useState(null);
   const [isFlipped, setIsFlipped] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
-  
-  
+
   // handle login state
   useEffect(() => {
     const loginStatus = localStorage.getItem('isLoggedIn');
-    console.log('Login status from localStorage:', loginStatus);
     if (loginStatus === 'true') {
       setShowLogin(false);
     }
@@ -48,22 +46,12 @@ function App() {
 
     setRandomSweWord(randomWord.swedish_word.toLowerCase());
     setCorrectFinAnswer(randomWord.finnish_word.toLowerCase());
-
-    // debugging
-    console.log("------------------------");
-    console.log("randomWord:", randomWord);
-    console.log("randomIndex: " + randomIndex);
-    console.log("Random swedish: " + randomWord.swedish_word);
-    console.log("Random finnish: " + randomWord.finnish_word);
-    console.log("------------------------");
   }
 
   // fetch input on enter key
   function handleKeyDown(e) {
     if (e.key === "Enter") {
-      console.log("Enter!");
       fetchInput();
-
       setEnteredText(""); // clear input field
     }
   }
@@ -88,7 +76,6 @@ function App() {
     e.preventDefault();
     try {
       localStorage.setItem('isLoggedIn', 'true');
-      console.log('After setting localStorage:', localStorage.getItem('isLoggedIn'));
       setShowLogin(false);
     } catch (error) {
       console.error('Error setting localStorage:', error);
@@ -98,7 +85,6 @@ function App() {
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     setShowLogin(true);
-    console.log('localStorage after logout:', localStorage.getItem('isLoggedIn'));
   };
 
   // compare input when input changes
@@ -116,40 +102,35 @@ function App() {
   // if backend/database not loaded, return loading screen
   if (loading) {
     return (
-      <div className="flex flex-col h-screen justify-center items-center space-y-4">
-        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
-        <span className="text-lg font-semibold">
+      <div className="flex flex-col h-screen justify-center items-center space-y-4 bg-background dark:bg-background-dark">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary-600"></div>
+        <span className="text-lg font-semibold text-label dark:text-label-dark">
           loading database<span className="typewriter-dots ml-1" />
         </span>
       </div>
     );
   }
   if (error) {
-    return <div className="error">{error}</div>;
+    return <div className="error text-error">{error}</div>;
   }
 
   return (
-    <div id="container" className='font-chewy'>
-      
+    <div id="container" className="font-chewy bg-background dark:bg-background-dark min-h-screen">
       {/* logout button */}
       <div className="absolute top-4 right-4">
         <button 
           onClick={handleLogout}
-          className="btn btn-secondary px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-md"
-        >
+          className="btn btn-secondary px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg shadow-md border-none">
           Logout
         </button>
       </div>
 
       <div id="centerContainer" className="flex flex-col items-center justify-center mx-auto h-screen lg:py-10">
-
-
-        <div className='flex flex-col items-start border-2 border-black p-8 rounded-lg bg-blue-300 gap-2 shadow-lg shadow-gray-900'>
-        
+        <div className="flex flex-col items-start border-2 border-cardborder-dark p-8 rounded-lg bg-card dark:bg-card-dark gap-2 shadow-lg">
           <FlipCard front={randomSweWord} back={correctFinAnswer} isFlipped={isFlipped} />
           
           {/* buttons */}
-          <button className="btn btn-primary"onClick={randomWord}>
+          <button className="btn btn-primary" onClick={randomWord}>
             <p>Randomize word</p>
           </button>
           <button className="btn btn-primary" onClick={() => setIsFlipped(f => !f)}>
@@ -159,27 +140,26 @@ function App() {
           {/* input answer */}
           <div>
             <input
-              className='input input-bordered w-full max-w-xs'
+              className="input input-bordered w-full max-w-xs bg-inputbg dark:bg-inputbg-dark border-inputborder dark:border-inputborder-dark text-inputtext dark:text-inputtext-dark"
               type="text"
               value={enteredText}
               onChange={(e) => {
                 setInputValue(e.target.value);
                 setEnteredText(e.target.value);
               }}
-              placeholder='finnishInput'
+              placeholder="finnishInput"
               onKeyDown={handleKeyDown}
             />
           </div>
 
           {/* input feedback */}
-          <p>Input: {input}</p>
-          {isCorrect === true && <p className='text-green-600'>Correct!</p>}
-          {isCorrect === false && <p className='text-red-600'>Incorrect!</p>}
+          <p className="text-label dark:text-label-dark">Input: {input}</p>
+          {isCorrect === true && <p className="text-success">Correct!</p>}
+          {isCorrect === false && <p className="text-error">Incorrect!</p>}
         </div>
       </div>
-
     </div>
- );
+  );
 }
 
 export default App
