@@ -3,6 +3,7 @@ import './App.css'
 import axios from 'axios';
 import FlipCard from './FlipCard.jsx';
 import LoginPage from './LoginPage.jsx';
+import MoiIntro from './MoiIntro.jsx';
 
 function App() {
   const [input, setInput] = useState('');
@@ -16,6 +17,7 @@ function App() {
   const [error, setError] = useState(null);
   const [isFlipped, setIsFlipped] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
+  const [showIntro, setShowIntro] = useState(true);
 
   // handle login state
   useEffect(() => {
@@ -93,6 +95,11 @@ function App() {
       compareInput();
     }
   }, [input]);
+
+  // intro page
+  if (showIntro) {
+    return <MoiIntro setShowIntro={setShowIntro} timeOutS={1.6}/>;
+  }
   
   // login page
   if (showLogin) {

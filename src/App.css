@@ -25,7 +25,7 @@ body {
   letter-spacing: 2px;
 }
 
-/* flicard */
+/* flipcard */
 .card { perspective: 800px;}
 .card__content {transform-style: preserve-3d;}
 
@@ -40,3 +40,46 @@ body {
 .card.flipped .card__content {
   transform: rotateY(.5turn);
 }
+
+/* MoiIntro */
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+  20%, 40%, 60%, 80% { transform: translateX(8px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes fade-away {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.slide-in-left {
+  animation: slide-in-left 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.fade-away {
+  animation: fade-away 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.slide-in-then-fade {
+  animation:
+    slide-in-left 0.3s cubic-bezier(0.4, 0, 0.2, 1) both,
+    fade-away 0.8s cubic-bezier(0.4, 0, 0.2, 1) both 0.8s;
+}
+
