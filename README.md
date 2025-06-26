@@ -38,6 +38,9 @@ Starts both frontend and backend in development mode.
    ```sh
    npm run start-backend
    ```
+> [!NOTE]
+> .env file in root folder is needed when running the app. The variable VITE_API_URL is compulsory. For development, set the variable to ``http://localhost:5000``
+
 
 Now your built frontend from `dist/` and the API are served via the backend.
 
