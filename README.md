@@ -48,4 +48,5 @@ Now your built frontend from `dist/` and the API are served via the backend.
 - [ ] shorten backend startup time
 - [ ] fix debugTimeOut time
 - [ ] implement Hugging Face AI
+- [ ] fix login save info
 
